@@ -2,7 +2,7 @@
   "name": "ait-nest-notification",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "AIT",
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
