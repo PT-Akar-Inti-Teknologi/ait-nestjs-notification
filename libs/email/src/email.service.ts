@@ -45,7 +45,7 @@ export class EmailService {
       await this.mailerService.sendMail(params);
       return { status: true };
     } catch (error) {
-      console.log(error);
+      console.log('error: ', error);
       throw new HttpException(
         {
           status: false,

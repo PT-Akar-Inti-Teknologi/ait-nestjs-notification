@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { SmsAdapter } from '../interfaces';
 
-export class CitcallAdapter {
+export class CitcallAdapter implements SmsAdapter {
   private apiKey: string;
   private baseUrl: string;
 

@@ -1,10 +1,11 @@
 import { HttpCode } from '@nestjs/common';
 import axios from 'axios';
+import { SmsAdapter } from '../interfaces';
 
 /**
  * Twilio adapter for sending sms
  */
-export class TwilioAdapter {
+export class TwilioAdapter implements SmsAdapter {
 
   private apiKey: string;
   private apiSecret: string;

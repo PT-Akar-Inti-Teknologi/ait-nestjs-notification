@@ -1,5 +1,6 @@
-import { HttpCode, Injectable } from '@nestjs/common';
-import { createSMSAdapter } from './adapters/factory.adapter';
+import { HttpCode, Inject, Injectable } from '@nestjs/common';
+import { FactoryAdapter } from './adapters/factory.adapter';
+import { SmsAdapter, SmsEnvConfig } from './interfaces';
 
 @Injectable()
 /**
@@ -9,27 +10,14 @@ import { createSMSAdapter } from './adapters/factory.adapter';
 export class SmsService {
 
   /** sms adapter to use for sending sms */
-  private adapter: any;
+  private adapter: SmsAdapter;
 
-  /** sms provider {string} set sms provider in environment file (.env) using OTP_PROVIDER */
-  private provider: string = process.env.OTP_PROVIDER;
-  
-  /** sms apiKey {string} set apiKey from provider in environment file (.env) using OTP_APIKEY */
-  private apiKey: string = process.env.OTP_APIKEY;
-  
-  /** sms apiSecret {string} set apiSecret from provider in environment file (.env) using OTP_APISECRET */
-  private apiSecret: string = process.env.OTP_APISECRET;
-  
-  /** sms from {string} set from/sender phone number from provider in environment file (.env) using OTP_FROM */
-  private from: string = process.env.OTP_FROM;
-
-  constructor() {
-    /** create sms adapter from config */
-    this.adapter = createSMSAdapter(
-      this.provider,
-      this.apiKey,
-      this.apiSecret,
-      this.from,
+  constructor(@Inject('SMS_CONFIG_OPTIONS') config: SmsEnvConfig) {
+    this.adapter = FactoryAdapter.createSmsAdapter(
+      config.provider,
+      config.apiKey,
+      config.apiSecret,
+      config.from,
     );
   }
 

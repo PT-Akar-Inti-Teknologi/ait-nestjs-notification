@@ -14,11 +14,25 @@ By using this module/service, all we have to do is configure the credentials for
 
 ```
 # PROVIDER SUPPORT [mailtrap, sendinblue, mailgun, sendgrid, and standard smtp protocol]
-MAIL_HOST=
-MAIL_PORT=
-MAIL_USER=
-MAIL_PASS=
-MAIL_FROM=
+
+@Module({
+  imports: [
+    EmailModule.register({
+      transport: {
+        host: '',
+        port: '',
+        auth: {
+          user: '',
+          pass: '',
+        },
+      },
+      defaults: {
+        from: '',
+      },
+    }),
+  ],
+})
+
 ```
 After defining the credentials in the environment variables, the next step is that we can use this service/module by injecting (DI) it into another service or controller that needs it.
 
@@ -64,6 +78,16 @@ Besides that, there are several attributes that we can use (optional), including
 This module or service allows us to send SMS or OTP by using a Citcall or Twilio provider. As before, to use this service we only need to call it on the service application or module that needs it:
 
 ```
+@Module({
+  imports: [
+    SmsModule.register({
+      provider: '',
+      apiKey: '',
+      apiSecret: '',
+      from: '',
+    }),
+  ],
+})
 ```
 
 ## Author

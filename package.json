@@ -1,11 +1,14 @@
 {
-  "name": "ait-nest-notification",
+  "name": "@ait/nest-notification",
   "version": "0.0.1",
   "description": "",
   "author": "AIT",
   "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "nest build",
+    "build": "rimraf dist && tsc",
+    "prepublish": "npm run build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
