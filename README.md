@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/arrow_loop3.png" width="75">
+  <img src="https://cdn-icons-png.flaticon.com/512/126/126816.png" width="75">
 </p>
 
 # Module Utils
@@ -38,7 +38,7 @@ After defining the credentials in the environment variables, the next step is th
 
 ```
 import { Injectable } from '@nestjs/common';
-import { EmailService } from './email/email.service';
+import { EmailService } from '@ait/nestjs-notification';
 
 @Injectable()
 export class AppService {
@@ -75,7 +75,7 @@ Besides that, there are several attributes that we can use (optional), including
 ```
 
 ## SMS Module
-This module or service allows us to send SMS or OTP by using a Citcall or Twilio provider. As before, to use this service we only need to call it on the service application or module that needs it:
+This module or service allows us to send SMS or OTP by using a Citcall or Twilio provider, to use this service we only need to call it on the service application or module that needs it:
 
 ```
 @Module({
@@ -90,5 +90,22 @@ This module or service allows us to send SMS or OTP by using a Citcall or Twilio
 })
 ```
 
-## Author
+we can use this service/module by injecting (DI) it into another service or controller that needs it.
+
+```
+import { Injectable } from '@nestjs/common';
+import { EmailService } from '@ait/nestjs-notification';
+
+@Injectable()
+export class AppService {
+
+  constructor(private readonly smsService: SmsService) {}
+
+  sendSMS(phoneNumber: string, message: string) {
+    return this.smsService.sendSMS(phoneNumber, message);
+  }
+}
+```
+## Contributors
 - sabbanaait <mailto: sabbana.azmi@akarinti.tech>
+- andrew_ongi <mailto: andrew@akarinti.tech>
