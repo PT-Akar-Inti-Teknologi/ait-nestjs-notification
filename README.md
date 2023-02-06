@@ -2,12 +2,16 @@
   <img src="https://cdn-icons-png.flaticon.com/512/126/126816.png" width="75">
 </p>
 
-# Module Utils
+# Module Notifications
 Module utils are a collection of modules or services that handle certain tasks and can be used in other modules or services that require such as:
 - Sending email
 - Sending SMS/OTP
 
-## Module Mailer
+### How to install
+```
+npm install --save https://github.com/PT-Akar-Inti-Teknologi/ait-nestjs-notification.git
+```
+## Service/Module Email
 We can use this module for sending email (email relay), using both the SMPT standard protocol and email service providers such as: mailgun, sendgrid, mailgun, sendinblue and mailtrap.
 
 By using this module/service, all we have to do is configure the credentials for the project's environment variables as follows:
@@ -74,7 +78,7 @@ Besides that, there are several attributes that we can use (optional), including
 @nestjs/config
 ```
 
-## SMS Module
+## Service/Module SMS
 This module or service allows us to send SMS or OTP by using a Citcall or Twilio provider, to use this service we only need to call it on the service application or module that needs it:
 
 ```
