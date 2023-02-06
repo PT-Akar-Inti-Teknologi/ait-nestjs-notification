@@ -2,19 +2,19 @@
   <img src="https://cdn-icons-png.flaticon.com/512/126/126816.png" width="75">
 </p>
 
-# Module Notifications
-Module utils are a collection of modules or services that handle certain tasks and can be used in other modules or services that require such as:
+# Notification Modules
+Notification Module is a collection of modules or services that handle specific tasks and can be used in other modules or services that require such as:
 - Sending email
 - Sending SMS/OTP
 
 ### How to install
 ```
-npm install --save https://github.com/PT-Akar-Inti-Teknologi/ait-nestjs-notification.git
+yarn add https://github.com/PT-Akar-Inti-Teknologi/ait-nestjs-notification.git
 ```
 ## Service/Module Email
-We can use this module for sending email (email relay), using both the SMPT standard protocol and email service providers such as: mailgun, sendgrid, mailgun, sendinblue and mailtrap.
+We can use this module for sending email (email relay), using both standard SMPT protocols and email service providers such as: mailgun, sendgrid, mailgun, sendinblue and mailtrap.
 
-By using this module/service, all we have to do is configure the credentials for the project's environment variables as follows:
+Using this module/service all we have to do is register the notification module and configure the credentials in the main module as follows:
 
 ```
 # PROVIDER SUPPORT [mailtrap, sendinblue, mailgun, sendgrid, and standard smtp protocol]
@@ -55,7 +55,7 @@ export class AppService {
 }
 
 ```
-in the options parameter, there is a minimum attribute that must be set, including:
+in the options parameter, there are minimum attributes that must be set, including:
 ```
 {
   to: <email destination | string or array string[] for multiple recepient>,
@@ -63,7 +63,7 @@ in the options parameter, there is a minimum attribute that must be set, includi
   body: <email body bisa berupa text/html>
 }
 ```
-Besides that, there are several attributes that we can use (optional), including:
+In addition there are several attributes that we can use (optional), including:
 ```
 {
   ...
@@ -79,7 +79,8 @@ Besides that, there are several attributes that we can use (optional), including
 ```
 
 ## Service/Module SMS
-This module or service allows us to send SMS or OTP by using a Citcall or Twilio provider, to use this service we only need to call it on the service application or module that needs it:
+This module or service allows us to send SMS or OTP using a Citcall or Twilio provider.
+Using this module/service all we have to do is register the notification module and configure the credentials in the main module as follows:
 
 ```
 @Module({
