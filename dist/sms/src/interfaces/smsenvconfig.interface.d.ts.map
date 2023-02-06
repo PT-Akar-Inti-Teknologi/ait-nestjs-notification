@@ -1,0 +1,1 @@
+{"version":3,"file":"smsenvconfig.interface.d.ts","sourceRoot":"","sources":["../../../../libs/sms/src/interfaces/smsenvconfig.interface.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,YAAY;IAC3B,QAAQ,EAAE,MAAM,CAAC;IACjB,MAAM,EAAE,MAAM,CAAC;IACf,SAAS,EAAE,MAAM,CAAC;IAClB,IAAI,EAAE,MAAM,CAAC;CACd"}
