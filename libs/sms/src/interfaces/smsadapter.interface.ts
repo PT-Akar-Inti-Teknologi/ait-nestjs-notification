@@ -1,3 +1,3 @@
 export interface SmsAdapter {
-  sendSMS(phoneNumber: string, message: string): any; 
+  sendSMS(phoneNumber: string, message: string): any;
 }
