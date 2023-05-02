@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { HttpCode } from '@nestjs/common';
 import axios, { AxiosRequestConfig } from 'axios';
 import { SmsAdapter } from '../interfaces/smsadapter.interface';
@@ -11,33 +10,12 @@ export class FazPassAdapter implements SmsAdapter {
   private apiSecret: string;
   private baseUrl: string;
   private from: string;
-  private notificationsEnabled = true;
 
   constructor(apiKey: string, apiSecret: string, from: string) {
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
     this.from = from;
     this.baseUrl = `https://api.fazpass.com`;
-  }
-
-  enableNotifications() {
-    this.notificationsEnabled = true;
-  }
-
-  disableNotifications() {
-    this.notificationsEnabled = false;
-  }
-
-  @HttpCode(200)
-  async changeToDisableNotification() {
-    this.disableNotifications();
-    return { message: 'Notifications disabled' };
-  }
-
-  @HttpCode(200)
-  async changeToEnableNotification() {
-    this.enableNotifications();
-    return { message: 'Notifications enabled' };
   }
 
   @HttpCode(200)
@@ -60,12 +38,7 @@ export class FazPassAdapter implements SmsAdapter {
     };
 
     try {
-      if (this.notificationsEnabled) {
-        await axios.post(apiUrl, body, config);
-        return { message: 'SMS sent successfully' };
-      } else {
-        return { message: 'Notifications disabled' };
-      }
+      await axios.post(apiUrl, body, config);
     } catch (error) {
       throw error;
     }
