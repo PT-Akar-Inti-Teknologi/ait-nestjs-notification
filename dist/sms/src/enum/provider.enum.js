@@ -5,5 +5,6 @@ var Provider;
 (function (Provider) {
     Provider["TWILIO"] = "twilio";
     Provider["CITCALL"] = "citcall";
+    Provider["FAZPASS"] = "fazpass";
 })(Provider = exports.Provider || (exports.Provider = {}));
 //# sourceMappingURL=provider.enum.js.map

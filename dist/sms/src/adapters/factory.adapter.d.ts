@@ -1,5 +1,6 @@
 import { CitcallAdapter } from './citcall.adapter';
 import { TwilioAdapter } from './twilio.adapter';
+import { FazPassAdapter } from './fazpass.adapter';
 export declare class FactoryAdapter {
     /**
      * Sms Adapter
@@ -8,6 +9,6 @@ export declare class FactoryAdapter {
      * @param {string} - apiSecret, set into environment variable OTP_APISECRET
      * @param {string} - from, set into environment variable OTP_FROM
      */
-    static createSmsAdapter(provider: string, apiKey: string, apiSecret: string, from: string): CitcallAdapter | TwilioAdapter;
+    static createSmsAdapter(provider: string, apiKey: string, apiSecret: string, from: string): CitcallAdapter | TwilioAdapter | FazPassAdapter;
 }
 //# sourceMappingURL=factory.adapter.d.ts.map
