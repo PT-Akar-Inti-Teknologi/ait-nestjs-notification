@@ -113,7 +113,7 @@ export class AppService {
 }
 ```
 
-# Service/Module Telegram
+## Service/Module Telegram
 This module or service allows us to send notifications to a Telegram channel or chat using the Telegram Bot API.
 
 ```
