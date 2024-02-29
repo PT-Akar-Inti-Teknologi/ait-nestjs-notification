@@ -6,6 +6,7 @@
 Notification Module is a collection of modules or services that handle specific tasks and can be used in other modules or services that require such as:
 - Sending email
 - Sending SMS/OTP
+- Sending message via telegram bot
 
 ### How to install
 ```
@@ -111,6 +112,57 @@ export class AppService {
   }
 }
 ```
+
+# Service/Module Telegram
+This module or service allows us to send notifications to a Telegram channel or chat using the Telegram Bot API.
+
+```
+@Module({
+  imports: [
+    TelegramModule.register({
+      botToken: '',
+      channelId: '',
+    }),
+  ],
+})
+```
+
+we can use this service/module by injecting (DI) it into another service or controller that needs it.
+
+```
+import { Injectable } from '@nestjs/common';
+import { TelegramService } from '@ait/nestjs-notification';
+
+@Injectable()
+export class MyService {
+
+  constructor(private readonly telegramService: TelegramService) {}
+
+  sendMessage(message: string) {
+    return this.telegramService.postToChannel(message);
+  }
+}
+```
+
+The TelegramService extends the TelegramBot class provided by the node-telegram-bot-api package. This means you can use all methods available in the TelegramBot class directly through the TelegramService instance.
+
+Here's an example of using the sendMessage method directly:
+
+```
+import { Injectable } from '@nestjs/common';
+import { TelegramService } from '@ait/nestjs-notification';
+
+@Injectable()
+export class MyService {
+  constructor(private readonly telegramService: TelegramService) {}
+
+  async sendMessageToUser(userId: string, message: string) {
+    await this.telegramService.sendMessage(userId, message);
+  }
+}
+```
+
 ## Contributors
 - sabbanaait <mailto: sabbana.azmi@akarinti.tech>
 - andrew_ongi <mailto: andrew@akarinti.tech>
+- aldiprasetyo <mailto: aldi.prasetyo@akarinti.tech>
